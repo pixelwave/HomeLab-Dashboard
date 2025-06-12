@@ -1,0 +1,771 @@
+decluttering_templates:
+  power_template:
+    card:
+      type: custom:stack-in-card
+      cards:
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          show_name: true
+          show_icon: false
+          show_state: false
+          tap_action:
+            action: none
+          entity: '[[port_entity]]'
+          name: '[[port_number]]'
+          styles:
+            name:
+            - color: grey
+          state:
+          - value: 'off'
+            styles:
+              card:
+              - filter: opacity(30%)
+              icon:
+              - filter: grayscale(100%)
+          card_mod:
+            style: |
+              ha-card {
+                border: 0px !important;
+                margin-left: -20px !important;
+                font-size: 14px !important;
+                font-weight: bold !important;
+                height: 45px;
+              }
+        - type: custom:button-card
+          show_name: true
+          show_icon: false
+          show_state: false
+          tap_action:
+            action: none
+          entity: '[[port_entity]]'
+          name: '[[port_name]]'
+          styles:
+            name:
+            - font-weight: bold
+            - font-size: 13px
+            - color: white
+            - justify-self: start
+          state:
+          - value: 'off'
+            styles:
+              card:
+              - filter: opacity(30%)
+              icon:
+              - filter: grayscale(100%)
+              name:
+              - color: grey
+          card_mod:
+            style: |
+              ha-card {
+                border: 0px !important;
+                margin-left: -50px !important;
+                #margin-right: 200px !important;
+                #padding-right: 100px !important;
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                height: 45px !important;
+                width: 500px !important;
+              }
+        - show_name: false
+          show_icon: false
+          show_state: true
+          type: custom:button-card
+          entity: '[[consumption_entity]]'
+          styles:
+            state:
+            - justify-self: end
+            - color: gold
+          state:
+          - value: '0'
+            styles:
+              card:
+              - filter: opacity(20%)
+              icon:
+              - filter: grayscale(100%)
+              state:
+              - color: white
+          card_mod:
+            style: |
+              ha-card {
+                border: 0px !important;
+                #background: #262626 !important;
+                padding-right: 10px !important;
+                border-radius: 10px !important;
+                font-weight: 400 !important;
+                color: #FFFFFF !important;
+                height: 45px;
+                font-size: 14px !important;
+              }
+        - show_name: false
+          show_icon: true
+          type: custom:button-card
+          entity: '[[port_entity]]'
+          state:
+          - value: 'off'
+            styles:
+              card:
+              - filter: opacity(30%)
+              icon:
+              - filter: grayscale(100%)
+          tap_action:
+            action: toggle
+          card_mod:
+            style: |
+              ha-card {
+                border: 0px !important;
+                background: #262626 !important;
+                #border-radius: 8px!important;
+                height: 45px;
+              }
+      card_mod:
+        style: |
+          ha-card {
+            margin-bottom: -3px !important;
+            border-radius: 5px! important;
+          }
+views:
+- type: sections
+  max_columns: 4
+  title: Power & Boot Control
+  path: sandbox
+  sections:
+  - type: grid
+    cards:
+    - type: heading
+      heading: PDU
+    - type: entities
+      entities:
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 1
+        - port_name: PVE
+        - port_entity: switch.pdu_port_1_switch
+        - consumption_entity: sensor.pdu_port_1_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 2
+        - port_name: Unifi USW-16-POE
+        - port_entity: switch.pdu_port_2_switch
+        - consumption_entity: sensor.pdu_port_2_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 3
+        - port_name: BambuLab X1C
+        - port_entity: switch.pdu_port_3_switch
+        - consumption_entity: sensor.pdu_port_3_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 4
+        - port_name: Unifi USW-Aggregation
+        - port_entity: switch.pdu_port_4_switch
+        - consumption_entity: sensor.pdu_port_4_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 5
+        - port_name: P1 (Workstation)
+        - port_entity: switch.pdu_port_5_switch
+        - consumption_entity: sensor.pdu_port_5_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 6
+        - port_name: PC Control (Switches)
+        - port_entity: switch.pdu_port_6_switch
+        - consumption_entity: sensor.pdu_port_6_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 7
+        - port_name: P4 (HP@Mom)
+        - port_entity: switch.pdu_port_7_switch
+        - consumption_entity: sensor.pdu_port_7_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 8
+        - port_name: Mac Studio
+        - port_entity: switch.pdu_port_8_switch
+        - consumption_entity: sensor.pdu_port_8_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 9
+        - port_name: Anker 250W Charger
+        - port_entity: switch.pdu_port_9_switch
+        - consumption_entity: sensor.pdu_port_9_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 10
+        - port_name: P3 (NUC@Dad)
+        - port_entity: switch.pdu_port_10_switch
+        - consumption_entity: sensor.pdu_port_10_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 11
+        - port_name: PVE Backup
+        - port_entity: switch.pdu_port_11_switch
+        - consumption_entity: sensor.pdu_port_11_actual_consumption
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 12
+        - port_name: KVM EZCOO
+        - port_entity: switch.pdu_port_12_switch
+        - consumption_entity: sensor.pdu_port_12_actual_consumption
+      state_color: true
+      show_header_toggle: false
+  - type: grid
+    cards:
+    - type: heading
+      heading: POE Switch
+    - type: entities
+      entities:
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 1
+        - port_name: Desk Controller (ESP32)
+        - port_entity: switch.usw_16_poe_port_1_poe
+        - consumption_entity: sensor.usw_16_poe_port_1_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 2
+        - port_name: '-'
+        - port_entity: switch.usw_16_poe_port_2_poe
+        - consumption_entity: sensor.usw_16_poe_port_2_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 3
+        - port_name: '-'
+        - port_entity: switch.usw_16_poe_port_3_poe
+        - consumption_entity: sensor.usw_16_poe_port_3_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 4
+        - port_name: '-'
+        - port_entity: switch.usw_16_poe_port_4_poe
+        - consumption_entity: sensor.usw_16_poe_port_4_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 5
+        - port_name: piKVM
+        - port_entity: switch.usw_16_poe_port_5_poe
+        - consumption_entity: sensor.usw_16_poe_port_5_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 6
+        - port_name: '-'
+        - port_entity: switch.usw_16_poe_port_6_poe
+        - consumption_entity: sensor.usw_16_poe_port_6_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 7
+        - port_name: PC Switch (ESP32)
+        - port_entity: switch.usw_16_poe_port_7_poe
+        - consumption_entity: sensor.usw_16_poe_port_7_poe_power
+      - type: custom:decluttering-card
+        template: power_template
+        variables:
+        - port_number: 8
+        - port_name: PC Boot (ESP32)
+        - port_entity: switch.usw_16_poe_port_8_poe
+        - consumption_entity: sensor.usw_16_poe_port_8_poe_power
+      state_color: true
+      show_header_toggle: false
+    - type: entities
+      entities:
+      - update.usw_16_poe
+      - update.usw_aggregation
+      state_color: true
+      show_header_toggle: false
+  - type: grid
+    cards:
+    - type: heading
+      heading: Boot
+    - type: entities
+      entities:
+      - entity: input_button.pc_switch_basement_pc3
+        name: Basement
+        show_state: false
+        type: custom:multiple-entity-row
+        entities:
+        - icon: mdi:microsoft-windows
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 1
+              computer: 1
+        - icon: mdi:apple
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 1
+              computer: 2
+        - icon: mdi:set-top-box
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 1
+              computer: 3
+      - entity: input_button.pc_switch_office_pc4
+        name: Office
+        show_state: false
+        type: custom:multiple-entity-row
+        entities:
+        - icon: mdi:microsoft-windows
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 2
+              computer: 1
+        - icon: mdi:apple
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 2
+              computer: 1
+        - icon: mdi:set-top-box
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 2
+              computer: 4
+      title: PC Switch
+      state_color: true
+      show_header_toggle: false
+    - type: entities
+      entities:
+      - entity: switch.wol_nuc
+        name: P3 (NUC@Dad)
+        icon: mdi:set-top-box
+      - entity: switch.wol_hp
+        name: P4 (HP@Mom)
+        icon: mdi:set-top-box
+      state_color: true
+      show_header_toggle: false
+      title: Wake on LAN
+    - type: entities
+      entities:
+      - entity: input_boolean.pikvm
+      state_color: true
+      show_header_toggle: false
+      title: Boot & Power
+    - type: entities
+      entities:
+      - entity: binary_sensor.rack_pc_boot_pc1_led
+        name: PC 1 -
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.rack_pc_boot_pc1_power_short
+          toggle: true
+          name: Short
+        - entity: switch.rack_pc_boot_pc1_power_long
+          toggle: true
+          name: Long
+      - entity: binary_sensor.rack_pc_boot_pc2_led
+        name: PC 2 -
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.rack_pc_boot_pc2_power_short
+          toggle: true
+          name: ' '
+        - entity: switch.rack_pc_boot_pc2_power_long
+          toggle: true
+          name: ' '
+      - entity: binary_sensor.rack_pc_boot_pc3_led
+        name: PC 3 -
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.rack_pc_boot_pc3_power_short
+          toggle: true
+          name: ' '
+        - entity: switch.rack_pc_boot_pc3_power_long
+          toggle: true
+          name: ' '
+      - entity: binary_sensor.rack_pc_boot_pc4_led
+        name: PC 4 - PVE Backup
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.rack_pc_boot_pc4_power_short
+          toggle: true
+          name: ' '
+        - entity: switch.rack_pc_boot_pc4_power_long
+          toggle: true
+          name: ' '
+      - entity: binary_sensor.rack_pc_boot_pc5_led
+        name: PC 5 - Workstation
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.rack_pc_boot_pc5_power_short
+          toggle: true
+          name: ' '
+        - entity: switch.rack_pc_boot_pc5_power_long
+          toggle: true
+          name: ' '
+      - entity: binary_sensor.rack_pc_boot_pc6_led
+        name: PC 6 -
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.rack_pc_boot_pc6_power_short
+          toggle: true
+          name: ' '
+        - entity: switch.rack_pc_boot_pc6_power_long
+          toggle: true
+          name: ' '
+      state_color: true
+      show_header_toggle: false
+      title: Wake on ESP32
+  cards: []
+- type: sections
+  sections:
+  - type: grid
+    cards:
+    - type: heading
+      heading: Boot
+    - type: entities
+      entities:
+      - entity: input_button.pc_switch_basement_pc3
+        name: Basement
+        show_state: false
+        type: custom:multiple-entity-row
+        entities:
+        - icon: mdi:microsoft-windows
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 1
+              computer: 1
+        - icon: mdi:apple
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 1
+              computer: 2
+        - icon: mdi:set-top-box
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 1
+              computer: 3
+      - entity: input_button.pc_switch_office_pc4
+        name: Office
+        show_state: false
+        type: custom:multiple-entity-row
+        entities:
+        - icon: mdi:microsoft-windows
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 2
+              computer: 1
+        - icon: mdi:apple
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 2
+              computer: 1
+        - icon: mdi:set-top-box
+          state_color: false
+          tap_action:
+            action: call-service
+            service: esphome.esp32_04_pc_control_switch_pc
+            target: {}
+            data:
+              terminal: 2
+              computer: 4
+      title: PC Switch
+      state_color: true
+      show_header_toggle: false
+    - type: entities
+      entities:
+      - entity: switch.wol_nuc
+        name: P3 (NUC@Dad)
+        icon: mdi:set-top-box
+      - entity: switch.wol_hp
+        name: P4 (HP@Mom)
+        icon: mdi:set-top-box
+      state_color: true
+      show_header_toggle: false
+      title: Wake on LAN
+    - type: entities
+      entities:
+      - entity: input_boolean.pikvm
+      state_color: true
+      show_header_toggle: false
+      title: Boot & Power
+    - type: entities
+      entities:
+      - entity: binary_sensor.esp32_04_pc_control_pc_1_state
+        name: PC 1 - P1 (Workstation)
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.esp32_04_pc_control_pc_1_short_press
+          toggle: true
+          name: Short
+        - entity: switch.esp32_04_pc_control_pc_1_long_press
+          toggle: true
+          name: Long
+      - entity: binary_sensor.esp32_04_pc_control_pc_2_state
+        name: PC 2 - PVE Backup
+        show_state: false
+        state_color: true
+        icon: mdi:power
+        type: custom:multiple-entity-row
+        entities:
+        - entity: switch.esp32_04_pc_control_pc_2_short_press
+          toggle: true
+          name: ' '
+        - entity: switch.esp32_04_pc_control_pc_2_long_press
+          toggle: true
+          name: ' '
+      state_color: true
+      show_header_toggle: false
+      title: Wake on ESP32
+  - type: grid
+    cards:
+    - type: heading
+      heading: PDU
+    - type: entities
+      entities:
+      - entity: switch.pdu_port_1_switch
+        name: 01 - PVE
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_1_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_2_switch
+        name: 02 - Unifi USW-16-POE
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_2_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_3_switch
+        name: 03 - BambuLab X1C
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_3_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_4_switch
+        name: 04 - Unifi USW-Aggregation
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_4_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_5_switch
+        name: 05 - P1 (Workstation)
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_5_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_6_switch
+        name: 06 - PC Control (Switches)
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_6_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_7_switch
+        name: 07 - P4 (HP@Mom)
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_7_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_8_switch
+        name: 08 - Mac Studio
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_8_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_9_switch
+        name: 09 - Test Bench
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_9_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_10_switch
+        name: 10 - P3 (NUC@Dad)
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_10_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_11_switch
+        name: 11 - PVE Backup
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_11_actual_consumption
+          name: ' '
+      - entity: switch.pdu_port_12_switch
+        name: 12 - KVM EZCOO
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.pdu_port_12_actual_consumption
+          name: ' '
+      state_color: true
+      show_header_toggle: false
+  - type: grid
+    cards:
+    - type: heading
+      heading: POE Switch
+    - type: entities
+      entities:
+      - entity: switch.usw_16_poe_port_1_poe
+        name: 01 - piKVM
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_1_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_2_poe
+        name: 02 - PC Control (ESP32)
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_2_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_3_poe
+        name: 03 -
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_3_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_4_poe
+        name: 04 -
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_4_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_5_poe
+        name: 05 -
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_5_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_6_poe
+        name: 06 -
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_6_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_7_poe
+        name: 07 -
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_7_poe_power
+          name: ' '
+      - entity: switch.usw_16_poe_port_8_poe
+        name: 08 -
+        type: custom:multiple-entity-row
+        toggle: true
+        state_color: true
+        entities:
+        - entity: sensor.usw_16_poe_port_8_poe_power
+          name: ' '
+      - type: divider
+      - update.usw_16_poe
+      - update.usw_aggregation
+  max_columns: 4
+  title: LEGACY
+  cards: []

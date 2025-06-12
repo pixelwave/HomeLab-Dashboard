@@ -1,0 +1,464 @@
+decluttering_templates:
+  headline_template:
+    card:
+      type: custom:mushroom-title-card
+      title: '[[name]]'
+      card_mod:
+        style: |
+          h1 {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            color: #555555 !important;
+            text-transform: uppercase;
+          }         
+  url_template:
+    card:
+      type: custom:button-card
+      entity: sun.sun
+      show_entity_picture: true
+      name: '[[name]]'
+      entity_picture: '[[ico_url]]'
+      tap_action:
+        action: url
+        url_path: '[[web_url]]'
+      card_mod:
+        style: |
+          ha-card {
+            border: 0px !important;
+            #background: #262626 !important;
+            background: none !important;
+            border-radius: 5px !important;
+            padding-bottom: 5px !important;
+            font-size: 12px !important;
+            font-weight: 500 !important;
+          }
+  docker_template:
+    card:
+      type: custom:stack-in-card
+      fill_container: false
+      layout_options:
+        grid_columns: 1
+        grid_rows: 2
+      cards:
+      - type: custom:button-card
+        entity: '[[entity_1]]'
+        show_entity_picture: true
+        name: '[[name]]'
+        entity_picture: '[[ico_url]]'
+        tap_action:
+          action: url
+          url_path: '[[web_url]]'
+        state:
+        - value: 'off'
+          styles:
+            card:
+            - filter: opacity(30%)
+            icon:
+            - filter: grayscale(100%)
+        card_mod:
+          style: |
+            ha-card {
+              border: 0px !important;
+              #background: #262626 !important;
+            }
+      - type: custom:button-card
+        entity: '[[entity_1]]'
+        show_icon: false
+        show_name: false
+        show_state: true
+        state:
+        - value: 'on'
+          styles:
+            card:
+            - filter: opacity(100%)
+            - color: '#00AD3A'
+            - font-weight: 500
+            - font-size: 15px
+            - text-transform: uppercase;
+        - value: 'off'
+          styles:
+            card:
+            - filter: opacity(30%)
+            - font-weight: 500
+            - font-size: 15px
+            - text-transform: uppercase;
+        card_mod:
+          style: |
+            ha-card {
+              border: 0px !important;
+              background: #262626 !important;
+              #background: #1C5B31 !important;
+            }
+      card_mod:
+        style: |
+          ha-card {
+            #border: 0px !important;
+            #background: #262626 !important;
+            border-radius: 5px !important;
+            #margin-bottom: 100px !important;
+          }
+views:
+- title: Home
+  path: sandbox
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    cards:
+    - type: custom:decluttering-card
+      template: headline_template
+      variables:
+      - name: Server
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: FritzBox
+      - ico_url: /local/icons/fritzbox.png
+      - web_url: http://192.168.178.1/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Proxmox
+      - ico_url: /local/icons/proxmox.png
+      - web_url: https://proxmox.local.custom-url.de/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: TrueNAS
+      - ico_url: /local/icons/truenas.png
+      - web_url: http://192.168.178.120/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Pterodactyl
+      - ico_url: /local/icons/pterodactyl.png
+      - web_url: http://192.168.178.130/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: IPMI
+      - ico_url: /local/icons/ipmi.png
+      - web_url: https://192.168.178.151/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: piKVM
+      - ico_url: /local/icons/pikvm.png
+      - web_url: https://192.168.178.150/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: PDU
+      - ico_url: /local/icons/pdu.png
+      - web_url: http://192.168.178.140/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: OpenSpeed
+      - ico_url: /local/icons/openspeedtest.png
+      - web_url: http://192.168.178.110:3010
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Backup
+      - ico_url: /local/icons/proxmox.png
+      - web_url: https://192.168.178.105:8006/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Backup
+      - ico_url: /local/icons/truenas.png
+      - web_url: http://192.168.178.125/
+    - type: custom:decluttering-card
+      template: headline_template
+      variables:
+      - name: Media
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Jellyfin
+      - ico_url: /local/icons/jellyfin.png
+      - web_url: https://jellyfin.local.custom-url.de
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Prowlarr
+      - ico_url: /local/icons/prowlarr.png
+      - web_url: http://192.168.178.131:9696/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Radarr
+      - ico_url: /local/icons/radarr.png
+      - web_url: http://192.168.178.131:7878/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Sonarr
+      - ico_url: /local/icons/sonarr.png
+      - web_url: http://192.168.178.131:8989/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Readarr
+      - ico_url: /local/icons/readarr.png
+      - web_url: http://192.168.178.131:8787/
+    - type: custom:decluttering-card
+      template: headline_template
+      variables:
+      - name: Invoice ninja
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Invoice Ninja
+      - ico_url: /local/icons/invoice.png
+      - web_url: http://192.168.178.124
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Portainer
+      - ico_url: /local/icons/portainer.png
+      - web_url: https://192.168.178.124:9443
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Filebrowser
+      - ico_url: /local/icons/filebrowser.png
+      - web_url: http://192.168.178.124:8082
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: phpMyAdmin
+      - ico_url: /local/icons/phpmyadmin.png
+      - web_url: http://192.168.178.124:8090
+    - type: custom:decluttering-card
+      template: headline_template
+      variables:
+      - name: Cronicle
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Cronicle
+      - ico_url: /local/icons/cronicle.png
+      - web_url: http://cronicle:3012/
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Portainer
+      - ico_url: /local/icons/portainer.png
+      - web_url: https://192.168.178.135:9443
+    - type: custom:decluttering-card
+      template: url_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Filebrowser
+      - ico_url: /local/icons/filebrowser.png
+      - web_url: http://192.168.178.135:8082
+  - type: grid
+    cards:
+    - type: heading
+      heading: Docker
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: ESPHome
+      - ico_url: /local/icons/esphome.png
+      - web_url: https://esphome.local.custom-url.de
+      - entity_1: switch.docker_esphome
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Filebrowser
+      - ico_url: /local/icons/filebrowser.png
+      - web_url: https://filebrowser.local.custom-url.de
+      - entity_1: switch.docker_filebrowser
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: HA
+      - ico_url: /local/icons/homeassistant.png
+      - web_url: http://192.168.178.110:8123/
+      - entity_1: switch.docker_homeassistant
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: HA Fusion
+      - ico_url: /local/icons/ha-fusion.png
+      - web_url: https://hafusion.local.custom-url.de
+      - entity_1: switch.docker_ha_fusion
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Jellyfin
+      - ico_url: /local/icons/jellyfin.png
+      - web_url: https://jellyfin.local.custom-url.de
+      - entity_1: switch.docker_jellyfin
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Kuma
+      - ico_url: /local/icons/kuma.png
+      - web_url: https://kuma.local.custom-url.de
+      - entity_1: switch.docker_uptime_kuma
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Mosquitto
+      - ico_url: /local/icons/mosquitto.png
+      - web_url: http://192.168.178.110:1883/
+      - entity_1: switch.docker_mosquitto
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: nginx
+      - ico_url: /local/icons/nginx.png
+      - web_url: https://nginx.local.custom-url.de
+      - entity_1: switch.docker_nginx
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: piHole
+      - ico_url: /local/icons/pihole.png
+      - web_url: http://192.168.178.110:2000/
+      - entity_1: switch.docker_pihole
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Portainer
+      - ico_url: /local/icons/portainer.png
+      - web_url: https://portainer.local.custom-url.de
+      - entity_1: switch.docker_portainer
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Resilio
+      - ico_url: /local/icons/resilio.png
+      - web_url: https://resilio.local.custom-url.de
+      - entity_1: switch.docker_resilio_sync
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Teslamate
+      - ico_url: /local/icons/teslamate.png
+      - web_url: https://teslamate.local.custom-url.de
+      - entity_1: switch.docker_tesla_mate_teslamate_1
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: UniFi
+      - ico_url: /local/icons/unifi.png
+      - web_url: https://unifi.local.custom-url.de
+      - entity_1: switch.docker_unifi
+    - type: custom:decluttering-card
+      template: docker_template
+      layout_options:
+        grid_columns: 1
+      variables:
+      - name: Wiki
+      - ico_url: /local/icons/bookstack.png
+      - web_url: https://bookstack.local.custom-url.de
+      - entity_1: switch.docker_bookstack
+    - type: entities
+      entities:
+      - entity: sun.sun
+        name: Portainer
+        icon: mdi:docker
+        show_state: false
+        toggle: true
+        type: custom:multiple-entity-row
+        tap_action:
+          action: url
+          url_path: https://portainer.local.custom-url.de
+        entities:
+        - type: button
+          icon: mdi:toggle-switch
+          action_name: UPDATE ALL
+          tap_action:
+            toggle: switch.docker_portainer
+            confirmation:
+              text: Are you sure you want to turn off Portainer?
+        - entity: sensor.docker_containers_running
+          name: Running
+        - entity: sensor.docker_containers_total
+          name: Total
+        - entity: sensor.docker_version
+          name: Version
+        - type: button
+          icon: mdi:update
+          action_name: UPDATE ALL
+          tap_action:
+            action: call-service
+            confirmation:
+              text: Are you sure you want to update?
+            service: shell_command.run_watchtower
+      state_color: true
+  cards: []
