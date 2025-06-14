@@ -19,3 +19,5 @@ Also all the custom icons I created so far.
 <img width="1092" alt="Screenshot 2025-06-12 at 13 04 46" src="https://github.com/user-attachments/assets/b69d2f19-fc5d-4672-9d11-223b59e80c8e" />
 
 <img width="827" alt="Screenshot 2025-06-12 at 13 45 08" src="https://github.com/user-attachments/assets/4f491c51-55e3-4ef8-a9f3-9914a945935b" />
+
+<img width="1035" alt="Screenshot 2025-06-14 at 07 41 57" src="https://github.com/user-attachments/assets/3ae44419-ab41-4988-9e5d-6f0da47db33d" />
